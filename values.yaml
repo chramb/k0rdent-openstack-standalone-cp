@@ -11,9 +11,6 @@ clusterNetwork:
   serviceDomain: "cluster.local"
 
 clusterLabels: {}
-clusterAnnotations: {}
-
-ccmRegional: true
 
 identityRef:
   name: ""
@@ -22,7 +19,6 @@ identityRef:
 
 bastion:
   enabled: false
-  sshKeyName: ""
   spec:
     providerID: ""
     flavor: ""
@@ -44,7 +40,7 @@ externalNetwork:
     name: ""
 
 controlPlane:
-  sshKeyName: ""
+  sshPublicKey: ""
   providerID: ""
   flavor: ""
   image:
@@ -52,7 +48,6 @@ controlPlane:
       name: ""
   portOpts: []
   rootVolume: {}
-  additionalBlockDevices: []
   securityGroups:
     - filter:
         name: "default"
@@ -60,7 +55,7 @@ controlPlane:
         projectID: ""
 
 worker:
-  sshKeyName: ""
+  sshPublicKey: ""
   providerID: ""
   flavor: ""
   image:
@@ -68,7 +63,6 @@ worker:
       name: ""
   portOpts: []
   rootVolume: {}
-  additionalBlockDevices: []
   securityGroups:
     - filter:
         name: "default"
@@ -76,6 +70,4 @@ worker:
         projectID: ""
 
 k0s:
-  version: v1.32.3+k0s.0
-  api:
-    extraArgs: {}
+  version: v1.31.5+k0s.0

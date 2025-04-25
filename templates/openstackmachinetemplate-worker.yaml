@@ -27,15 +27,10 @@ spec:
       rootVolume:
         {{ .Values.worker.rootVolume | toYaml | nindent 8 }}
       {{- end }}
-      {{- if gt (len .Values.worker.additionalBlockDevices) 0 }}
-      additionalBlockDevices:
-        {{ .Values.worker.additionalBlockDevices | toYaml | nindent 8 }}
-      {{- end }}
       {{- if gt (len .Values.worker.securityGroups) 0 }}
       securityGroups:
         {{ .Values.worker.securityGroups | toYaml | nindent 8 }}
       {{- end }}
-      {{- $sshKey := .Values.worker.sshKeyName | default .Values.worker.sshPublicKey }}
-      {{- if $sshKey }}
-      sshKeyName: {{ $sshKey }}
-      {{- end }}
+      {{- if not ( .Values.worker.sshPublicKey | empty) }}
+      sshKeyName: {{ .Values.worker.sshPublicKey }}
+      {{- end }}      

@@ -3,11 +3,11 @@
 {{- end }}
 
 {{- define "openstackmachinetemplate.controlplane.name" -}}
-    {{- include "cluster.name" . }}-cp-mt-{{ .Values.controlPlane.image | toString | sha256sum | trunc 8 }}
+    {{- include "cluster.name" . }}-cp-mt
 {{- end }}
 
 {{- define "openstackmachinetemplate.worker.name" -}}
-    {{- include "cluster.name" . }}-worker-mt-{{ .Values.worker.image | toString | sha256sum | trunc 8 }}
+    {{- include "cluster.name" . }}-worker-mt
 {{- end }}
 
 {{- define "k0scontrolplane.name" -}}
